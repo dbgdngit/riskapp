@@ -20,13 +20,18 @@ class Risk(models.Model):
     Rating_rationale = models.CharField(max_length=60)
     Residual_Likelihood = models.ForeignKey("Res_Likelihood_rating", on_delete=models.CASCADE)
     Associated_Controls = models.ManyToManyField("Controls")
+
     
 class Risk_type(models.Model):
     description = models.CharField(max_length=15)
 
+    def __unicode__(self):
+        return self.description
+
 class Controls(models.Model):
     controlref = models.CharField(max_length=9)
     description = models.CharField(max_length=60)
+    owner = models.ForeignKey("Control_Owners", on_delete=models.CASCADE)
     type = models.CharField(max_length=60)
     status = models.ForeignKey("control_status", on_delete=models.CASCADE)
     is_pci = models.CharField(max_length=1)
@@ -34,23 +39,44 @@ class Controls(models.Model):
     is_iso27001 = models.CharField(max_length=1)
     is_gdpr = models.CharField(max_length=1)
 
+    def __unicode__(self):
+        return self.status
+
 class Risk_Owners(models.Model):
     name = models.CharField(max_length=30)
 
+    def __unicode__(self):
+        return self.name
+
 class Control_Owners(models.Model):
     name = models.CharField(max_length=30)
+
+    def __unicode__(self):
+        return self.name
 
 class Likelihood_rating(models.Model):
     label = models.CharField(max_length=12)
     value = models.IntegerField
 
+    def __unicode__(self):
+        return self.label
+
 class Impact_rating(models.Model):
     label = models.CharField(max_length=12)
     value = models.IntegerField
+
+    def __unicode__(self):
+        return self.label
 
 class Res_Likelihood_rating(models.Model):
     label = models.CharField(max_length=12)
     value = models.IntegerField
 
+    def __unicode__(self):
+        return self.label
+
 class control_status(models.Model):
     label = models.CharField(max_length=12)
+
+    def __unicode__(self):
+        return self.label
