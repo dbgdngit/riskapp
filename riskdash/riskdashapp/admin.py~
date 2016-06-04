@@ -1,6 +1,9 @@
 from django.contrib import admin
 
-from .models import Risk,Risk_type,Controls,Risk_Owners,Control_Owners,Likelihood_rating,Res_Likelihood_rating,Impact_rating
+from .models import Risk,Risk_type,Controls,Risk_Owners,Control_Owners,Likelihood_rating,Res_Likelihood_rating,Impact_rating,control_status
+
+class OptionLikelihood_ratings(admin.ModelAdmin):
+   fieldsets = (('', {'fields': ('Label')}),)
 
 admin.site.register(Risk)
 admin.site.register(Risk_type)
