@@ -66,8 +66,9 @@ class Res_Likelihood_rating(models.Model):
 
 class Risk(models.Model):
     riskref = models.CharField(max_length=9)
-    description = models.CharField(max_length=60)
+    description = models.CharField(max_length=100)
     owner = models.ForeignKey("Risk_Owners", on_delete=models.CASCADE)
+    type_of_risk = models.ManyToManyField("Risk_type")
     created_date = models.DateTimeField('created on')
     last_updated_date = models.DateTimeField('last updated on')
     previous_updated_date = models.DateTimeField('previous update')
