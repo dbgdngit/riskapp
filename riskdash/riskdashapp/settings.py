@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'riskdash.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/home/dave/riskdash.sqlite3',
+        'NAME': os.path.join('~/riskdash.sqlite3'),
 #        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
