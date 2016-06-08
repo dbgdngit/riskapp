@@ -45,21 +45,21 @@ class Risk_Owners(models.Model):
 
 class Likelihood_rating(models.Model):
     label = models.CharField(max_length=12)
-    value = models.IntegerField
+    value = models.IntegerField(default='0')
 
     def __unicode__(self):
         return self.label
 
 class Impact_rating(models.Model):
     label = models.CharField(max_length=12)
-    value = models.IntegerField
+    value = models.IntegerField(default='0')
 
     def __unicode__(self):
         return self.label
 
 class Res_Likelihood_rating(models.Model):
     label = models.CharField(max_length=12)
-    value = models.IntegerField
+    value = models.IntegerField(default='0')
 
     def __unicode__(self):
         return self.label
@@ -72,8 +72,8 @@ class Risk(models.Model):
     created_date = models.DateTimeField('created on')
     last_updated_date = models.DateTimeField('last updated on')
     previous_updated_date = models.DateTimeField('previous update')
-    Score = models.IntegerField
-    previous_score = models.IntegerField
+    Score = models.IntegerField(default='0')
+    previous_score = models.IntegerField(default='0')
     ranking = models.IntegerField
     previous_ranking = models.IntegerField
     Absolute_Likelihood = models.ForeignKey("Likelihood_rating", on_delete=models.CASCADE)
