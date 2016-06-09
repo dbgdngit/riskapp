@@ -26,7 +26,7 @@ class Controls(models.Model):
     controlref = models.CharField(max_length=9)
     description = models.CharField(max_length=100)
     owner = models.ForeignKey(Control_Owners)
-    type = models.CharField(max_length=60)
+    type_of_control = models.CharField(max_length=60)
     status = models.ForeignKey(control_status)
     is_pci = models.CharField(max_length=1)
     is_cyber_essentials = models.CharField(max_length=1)
