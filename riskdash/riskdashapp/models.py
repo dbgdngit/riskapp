@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.contrib import admin
 
 # Create your models here.
     
@@ -84,3 +85,11 @@ class Risk(models.Model):
 
     def __unicode__(self):
         return unicode(self.description)
+
+    def newScore(self):
+        return self.Impact_rating.value * self.Res_Likelihood_rating.value
+        Score = property(newScore)
+
+class RiskAdmin(admin.ModelAdmin):
+    readonly_fields = ('Score',)
+    list_display = ('riskref','description','Score','owner')
