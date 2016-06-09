@@ -86,10 +86,12 @@ class Risk(models.Model):
     def __unicode__(self):
         return unicode(self.description)
 
-    def newScore(self):
-        return self.Impact_rating.value * self.Res_Likelihood_rating.value
-        Score = property(newScore)
+    @property
+#    def newScore(self):
+    def Score(self):
+        return self.Absolute_Impact.value * self.Residual_Likelihood.value
+#        Score = property(newScore)
 
 class RiskAdmin(admin.ModelAdmin):
     readonly_fields = ('Score',)
-    list_display = ('riskref','description','Score','owner')
+    list_display = ('riskref','description','Score','Absolute_Impact','Absolute_Likelihood','Residual_Likelihood','owner')
