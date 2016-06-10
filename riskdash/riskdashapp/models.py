@@ -73,7 +73,7 @@ class Risk(models.Model):
     created_date = models.DateTimeField('created on')
     last_updated_date = models.DateTimeField('last updated on')
     previous_updated_date = models.DateTimeField('previous update')
-    Score = models.IntegerField(default='0')
+    Score = models.IntegerField(null=True)
     previous_score = models.IntegerField(default='0')
     ranking = models.IntegerField
     previous_ranking = models.IntegerField
