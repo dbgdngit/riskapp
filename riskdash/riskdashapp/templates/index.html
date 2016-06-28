@@ -1,0 +1,9 @@
+{% if top_risk_list %}
+    <ul>
+    {% for Risk in top_risk_list %}
+        <li>{{ Risk.riskref }},{{ Risk.description }},{{ Risk.owner }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No risks are available.</p>
+{% endif %}
