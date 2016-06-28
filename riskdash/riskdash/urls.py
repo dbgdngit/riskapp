@@ -22,5 +22,9 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^riskdashapp/', include('riskdashapp.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^controls/', views.controls, name='controls'), 
+    url(r'^risks/', views.risks, name='risks'),
+    url(r'^summary/', views.summary, name='summary'),
+    url(r'^topten/', views.topten, name='topten'),
 ]
 
