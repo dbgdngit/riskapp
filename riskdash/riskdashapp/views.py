@@ -5,7 +5,7 @@ import operator
 
 # Create your views here.
 
-from .models import Risk
+from .models import Risk, Controls
 
 def index(request):
 #    top_risk_list = Risk.objects.order_by('riskref')[:10]
@@ -17,7 +17,12 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 def controls(request):
-    return HttpResponse('Control view to be completed')
+    control_list = Controls.objects.order_by('controlref')
+    template = loader.get_template('controls.html')
+    context = {
+        'control_list': control_list,
+    }
+    return HttpResponse(template.render(context, request))
 
 def risks(request):
     return HttpResponse('Risk detailed view to be completed')
