@@ -2,8 +2,15 @@ table {
     border: 1px solid black;
 }
 
+th {
+   color: white;
+   background-color: darkblue;
+   padding: 5px;
+}
+
 td {
    color: blue;
    background-color: lightblue;
    padding: 5px;
 }
+

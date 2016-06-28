@@ -4,8 +4,9 @@
 
 {% if top_risk_list %}
     <table>
-    {% for Risk in top_risk_list %}
-        <tr><td>{{ Risk.riskref }}</td><td>{{ Risk.description }}</td><td>{{ Risk.owner }}</td><td>{{ Risk.Score }}</td></tr>
+        <tr><th>ID</th><th>Score</th><th>Description</th><th>Absolute Likelihood</th><th>Absolute Impact</th><th>Residual Likelihood</th><th>Owner</th></tr>    
+{% for Risk in top_risk_list %}
+        <tr><td>{{ Risk.riskref }}</td><td>{{ Risk.Score }}</td><td>{{ Risk.description }}</td><td>{{ Risk.Absolute_Likelihood }}</td><td>{{ Risk.Absolute_Impact }}</td><td>{{ Risk.Residual_Likelihood }}</td><td>{{ Risk.owner }}</td></tr>
     {% endfor %}
     </table>
 {% else %}
