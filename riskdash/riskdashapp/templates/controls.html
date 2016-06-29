@@ -1,0 +1,16 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+
+{% if control_list %}
+<div style="overflow-x:auto;">
+    <table>
+        <tr><th>ID</th><th>Description</th><th>Status</th><th>Owner</th></tr>    
+{% for Controls in control_list %}
+        <tr><td>{{ Controls.controlref }}</td><td>{{ Controls.description }}</td><td>{{ Controls.status }}</td><td>{{ Controls.owner }}</td></tr>
+    {% endfor %}
+    </table>
+</div>
+{% else %}
+    <p>No controls are available.</p>
+{% endif %}
