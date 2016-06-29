@@ -9,7 +9,7 @@ from .models import Risk, Controls
 
 def index(request):
 #    top_risk_list = Risk.objects.order_by('riskref')[:10]
-    top_risk_list = sorted(Risk.objects.all(), key=lambda d: d.Score, reverse=True)[:10]
+    top_risk_list = sorted(Risk.objects.all(), key=lambda d: (d.ResScore,d.AbsScore), reverse=True)[:10]
     template = loader.get_template('index.html')
     context = {
         'top_risk_list': top_risk_list,

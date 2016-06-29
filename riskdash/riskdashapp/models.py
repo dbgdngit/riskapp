@@ -73,7 +73,8 @@ class Risk(models.Model):
     created_date = models.DateTimeField('created on')
     last_updated_date = models.DateTimeField('last updated on')
     previous_updated_date = models.DateTimeField('previous update')
-    Score = models.IntegerField(null=True)
+    AbsScore = models.IntegerField(null=True)
+    ResScore = models.IntegerField(null=True)
     previous_score = models.IntegerField(default='0')
     ranking = models.IntegerField
     previous_ranking = models.IntegerField
@@ -87,13 +88,17 @@ class Risk(models.Model):
         return unicode(self.description)
 
     @property
-    def Score(self):
+    def AbsScore(self):
+        return self.Absolute_Impact.value * self.Absolute_Likelihood.value
+
+    @property
+    def ResScore(self):
         return self.Absolute_Impact.value * self.Residual_Likelihood.value
 
 class RiskAdmin(admin.ModelAdmin):     
-    readonly_fields = ('Score',)
+    readonly_fields = ('AbsScore','ResScore',)
     ordering = ('riskref','Residual_Likelihood','Absolute_Likelihood','Absolute_Impact')
-    list_display = ('riskref','description','Score','Absolute_Impact','Absolute_Likelihood','Residual_Likelihood','owner')
+    list_display = ('riskref','description','AbsScore','Absolute_Impact','Absolute_Likelihood','ResScore','Residual_Likelihood','owner')
 
 class ControlsAdmin(admin.ModelAdmin):     
     ordering = ('description','controlref','status')
