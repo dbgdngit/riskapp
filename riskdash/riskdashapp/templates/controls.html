@@ -4,7 +4,8 @@
 
 {% if control_list %}
 <div style="overflow-x:auto;">
-    <table>
+<a href='../riskdashapp/'>Back to Main Menu</a>
+    <table class='center'>
         <tr><th>ID</th><th>Description</th><th>Status</th><th>Owner</th></tr>    
 {% for Controls in control_list %}
         <tr><td>{{ Controls.controlref }}</td><td>{{ Controls.description }}</td><td>{{ Controls.status }}</td><td>{{ Controls.owner }}</td></tr>

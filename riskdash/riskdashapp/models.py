@@ -29,10 +29,10 @@ class Controls(models.Model):
     owner = models.ForeignKey(Control_Owners)
     type_of_control = models.CharField(max_length=60)
     status = models.ForeignKey(control_status)
-    is_pci = models.CharField(max_length=1)
-    is_cyber_essentials = models.CharField(max_length=1)
-    is_iso27001 = models.CharField(max_length=1)
-    is_gdpr = models.CharField(max_length=1)
+    is_pci = models.BooleanField(default='False')
+    is_cyber_essentials = models.BooleanField(default='False')
+    is_iso27001 = models.BooleanField(default='False')
+    is_gdpr = models.BooleanField(default='False')
 
     def __unicode__(self):
         return self.description
