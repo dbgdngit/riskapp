@@ -8,7 +8,9 @@
     <table class='center'>
         <tr><th>ID</th><th>Absolute Score</th><th>Residual Score</th><th>Description</th><th>Absolute Likelihood</th><th>Absolute Impact</th><th>Residual Likelihood</th><th>Controls</th><th>Owner</th></tr>    
 {% for RISK in full_risk_list %}
-        <tr><td>{{ RISK.riskref }}</td><td>{{ RISK.absscore }}</td><td>{{ RISK.resscore }}</td><td>{{ RISK.description }}</td><td>{{ RISK.absolute_likelihood }}</td><td>{{ RISK.absolute_impact }}</td><td>{{ RISK.residual_likelihood }}</td><td>{{ RISK.associated_controls.all }}</td><td>{{ Risk.owner }}</td></tr>
+        <tr><td>{{ RISK.riskref }}</td><td>{{ RISK.absscore }}</td><td>{{ RISK.resscore }}</td><td>{{ RISK.description }}</td><td>{{ RISK.absolute_likelihood }}</td><td>{{ RISK.absolute_impact }}</td><td>{{ RISK.residual_likelihood }}</td><td><ol class="clist">
+{% for description in RISK.associated_controls.all %}<li>{{ description }}{% endfor %}</ol>
+</td><td>{{ RISK.owner }}</td></tr>
     {% endfor %}
     </table>
 </div>
