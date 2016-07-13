@@ -7,8 +7,8 @@
 <a href='../riskdashapp/'>Back to Main Menu</a>
     <table class='center'>
         <tr><th>ID</th><th>Absolute Score</th><th>Residual Score</th><th>Description</th><th>Absolute Likelihood</th><th>Absolute Impact</th><th>Residual Likelihood</th><th>Owner</th></tr>    
-{% for Risk in top_risk_list %}
-        <tr><td>{{ Risk.riskref }}</td><td>{{ Risk.AbsScore }}</td><td>{{ Risk.ResScore }}</td><td>{{ Risk.description }}</td><td>{{ Risk.Absolute_Likelihood }}</td><td>{{ Risk.Absolute_Impact }}</td><td>{{ Risk.Residual_Likelihood }}</td><td>{{ Risk.owner }}</td></tr>
+{% for RISK in top_risk_list %}
+        <tr><td>{{ RISK.riskref }}</td><td>{{ RISK.absscore }}</td><td>{{ RISK.resscore }}</td><td>{{ RISK.description }}</td><td>{{ RISK.absolute_likelihood }}</td><td>{{ RISK.absolute_impact }}</td><td>{{ RISK.residual_likelihood }}</td><td>{{ RISK.owner }}</td></tr>
     {% endfor %}
     </table>
 </div>
