@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.contrib import admin
+from django.http import HttpResponse
 
 # Create your models here.
     
@@ -99,6 +100,39 @@ class RISKADMIN(admin.ModelAdmin):
     readonly_fields = ('absscore','resscore',)
     ordering = ('riskref','residual_likelihood','absolute_likelihood','absolute_impact')
     list_display = ('riskref','description','absscore','absolute_impact','absolute_likelihood','resscore','residual_likelihood','owner')
+    
+    def export_csv(modeladmin, request, queryset):
+        import csv
+        from django.utils.encoding import smart_str
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename=mymodel.csv'
+        writer = csv.writer(response, csv.excel)
+        response.write(u'\ufeff'.encode('utf8')) # BOM (optional...Excel needs it to open UTF-8 file properly)
+        writer.writerow([
+           smart_str(u"riskref"),
+           smart_str(u"description"),
+           smart_str(u"absscore"),
+           smart_str(u"absolute_impact"),
+           smart_str(u"absolute_likelihood"),
+           smart_str(u"resscore"),
+           smart_str(u"residual_likelihood"),
+           smart_str(u"owner"),
+        ])
+        for obj in queryset:
+            writer.writerow([
+               smart_str(obj.riskref),
+               smart_str(obj.description),
+               smart_str(obj.absscore),
+               smart_str(obj.absolute_impact),
+               smart_str(obj.absolute_likelihood),
+               smart_str(obj.resscore),
+               smart_str(obj.residual_likelihood),
+               smart_str(obj.owner),
+        ])
+        return response
+    export_csv.short_description = u"Export CSV"
+
+    actions = [export_csv]
 
 class CONTROLSADMIN(admin.ModelAdmin):     
     ordering = ('description','controlref','status')
