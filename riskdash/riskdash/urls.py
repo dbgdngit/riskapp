@@ -20,6 +20,7 @@ from riskdashapp import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
+    url(r'^accounts/', include('allauth.urls')),
     url(r'^riskdashapp/', include('riskdashapp.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^controls/', views.controls, name='controls'), 
