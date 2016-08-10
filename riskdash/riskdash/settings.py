@@ -45,8 +45,9 @@ INSTALLED_APPS = [
      # Login Google provider
     'allauth.socialaccount.providers.google',
 ]
-SITE_ID = 1
-
+SITE_ID = 2
+ 
+GOOGLE_WHITE_LISTED_DOMAINS = ['guardian.co.uk']  
 LOGIN_REDIRECT_URL = '/'
 SOCIALACCOUNT_QUERY_EMAIL = True
 SOCIALACCOUNT_PROVIDERS = {
