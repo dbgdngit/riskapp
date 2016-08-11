@@ -47,8 +47,8 @@ INSTALLED_APPS = [
 ]
 SITE_ID = 2
  
-GOOGLE_WHITE_LISTED_DOMAINS = ['guardian.co.uk']  
 LOGIN_REDIRECT_URL = '/'
+SOCIALACCOUNT_ADAPTER = 'riskdash.adapter.MySocialAccountAdapter'
 SOCIALACCOUNT_QUERY_EMAIL = True
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
