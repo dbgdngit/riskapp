@@ -79,10 +79,10 @@ class RISK(models.Model):
     previous_score = models.IntegerField(default='0')
     ranking = models.IntegerField
     previous_ranking = models.IntegerField
-    absolute_likelihood = models.ForeignKey("LIKELIHOOD_RATING", on_delete=models.CASCADE,null=True)
-    absolute_impact = models.ForeignKey("IMPACT_RATING", on_delete=models.CASCADE,null=True)
+    absolute_likelihood = models.ForeignKey("LIKELIHOOD_RATING", on_delete=models.CASCADE)
+    absolute_impact = models.ForeignKey("IMPACT_RATING", on_delete=models.CASCADE)
     rating_rationale = models.CharField(max_length=60)
-    residual_likelihood = models.ForeignKey("RES_LIKELIHOOD_RATING", on_delete=models.CASCADE,null=True)
+    residual_likelihood = models.ForeignKey("RES_LIKELIHOOD_RATING", on_delete=models.CASCADE)
     associated_controls = models.ManyToManyField("CONTROLS")
 
     def __unicode__(self):
